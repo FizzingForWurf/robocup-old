@@ -1,5 +1,5 @@
 /**
- * Processes readings from the compass
+ * Processes readings from the compass for detecting the bearing
  */
 #include "Compass.h"
 

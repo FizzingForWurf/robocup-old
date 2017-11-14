@@ -1,10 +1,12 @@
 /**
- * Processes readings from the infrared sensor
+ * Processes readings from the infrared sensor for detecting the ball
  */
 #include "Infrared.h"
 
 #define ADDRESS_BACK 0x01
 #define ADDRESS_FRONT 0x02
+
+#define BACK_ARRAY_START 7
 
 void Infrared::init()
 {
@@ -66,7 +68,7 @@ void Infrared::read(int *strength, int *direction)
   } else {
     *strength = readBackStrength();
     // Back sensors should range from 8 to 14
-    *direction = readBackDirection() + 7;
+    *direction = readBackDirection() + BACK_ARRAY_START;
   }
 }
 

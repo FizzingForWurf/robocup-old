@@ -1,5 +1,6 @@
 #include "Compass.h"
 #include "Infrared.h"
+#include "Light.h"
 
 // Debug controls
 //#define DEBUG_SENSOR_READINGS
@@ -15,13 +16,18 @@
 static Compass compass;
 struct compassValues {
   int bearing;
-} static cmp;
+} static cp;
 
 static Infrared infrared;
 struct infraredValues {
   int direction;
   int strength;
 } static ir;
+
+static Light light;
+struct lightValues {
+  int location; // 0 -> Front; 1 -> Right; 2 -> Back; 3 -> Left
+} static li;
 
 void setup() {
   Serial.begin(BAUD_RATE);
@@ -44,15 +50,18 @@ void setup() {
 
 void loop() {
   // Read sensor values
-  compass.read(&cmp.bearing);
+  compass.read(&cp.bearing);
   infrared.read(&ir.strength, &ir.direction);
+  light.read(&li.location);
 
 #ifdef DEBUG_SENSOR_READINGS
   Serial.print("Bearing=");
-  Serial.print(cmp.bearing);
+  Serial.print(cp.bearing);
   Serial.print("   Strength=");
   Serial.print(ir.strength);
   Serial.print("   Direction=");
-  Serial.println(ir.direction);
+  Serial.print(ir.direction);
+  Serial.print("   Location=");
+  Serial.println(li.location);
 #endif
 }

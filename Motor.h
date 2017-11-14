@@ -6,9 +6,6 @@
 #include "Arduino.h"
 
 class Motor {
-  private:
-  public:
-    void read();
 };
 
 #endif
