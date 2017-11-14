@@ -2,7 +2,7 @@
 #include "Infrared.h"
 
 // Debug controls
-#define DEBUG_SENSOR_READINGS false
+//#define DEBUG_SENSOR_READINGS
 
 #define BAUD_RATE 9600
 

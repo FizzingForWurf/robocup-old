@@ -7,7 +7,7 @@
 #define ADDRESS_FRONT 0x02
 
 void Infrared::init()
-{  
+{
   Wire.beginTransmission(ADDRESS_FRONT);
   Wire.write(14);
   Wire.endTransmission();
